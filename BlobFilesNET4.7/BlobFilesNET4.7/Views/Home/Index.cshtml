@@ -1,0 +1,29 @@
+﻿@using BlobFilesNET4._7.Clase;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Instalación de librería</h2>
+        <p>Nuget: Azure.Storage.Blob versión: 12.9.1</p>
+        <p>Link de ejemplo: <a link="https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs/README.md">Github Microsoft</a></p>
+    </div>
+    <div class="col-md-12">
+        <h2>Lista de imagenes @Html.ActionLink("Agregar", "agregar", "Home")  </h2>
+
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            @foreach (ArchivoBlob imagen in (List<ArchivoBlob>)ViewBag.archivos)
+            {
+                <tr>
+                    <td><img src="@imagen.urlAbsolute" width="100"/></td>
+                    <td>Container: @imagen.BlobContainerName</td>
+                    <td>Name: @imagen.name </td>
+                    <td>Link: <a href="@imagen.urlAbsolute">Ver/Descargar</a> </td>
+                    <td><a href="~/home/eliminar?name=@imagen.name">Eliminar</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar </h2>
+
+@using (Html.BeginForm("Agregar", "Home", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="form-group form-check">
+        <input type="file" name="archivo" />
+    </div>
+    <button type="submit" class="btn btn-primary">Subir Imagen</button>
+}
